@@ -1,0 +1,20 @@
+/**
+ * Mapper:
+ * A mapper is responsible for converting data between different object models,
+ * typically between Entities (persistence layer) and DTOs (API layer).
+ *
+ * Role:
+ * - Separates database logic from API logic
+ * - Prevents exposing entities directly to the client
+ * - Improves code readability, security, and maintainability
+ *
+ * Mapping:
+ * Mapping defines how fields from one object are transferred to another,
+ * especially when field names or structures differ.
+ *
+ * Example:
+ * - entity.user.id  ->  dto.userId
+ *
+ * Mappers are usually used in the Service layer to prepare data
+ * for REST API requests and responses.
+ */
