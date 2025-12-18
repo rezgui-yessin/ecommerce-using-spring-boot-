@@ -8,14 +8,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
-public interface ProductMapper {
+public interface    ProductMapper {
 
-    // Entity -> DTO
-    @Mapping(target = "comments", source = "comments")
-    ProductDto toDto(Product product);
-
-    // DTO -> Entity
-    @Mapping(target = "comments", source = "comments")
-    Product toEntity(ProductDto productDto);
-
+    @Mapping(target = "userId",source = "user.id")
+    CommentDto toDTO(Comment comment);
+    @Mapping(target = "user.id", source = "userId")
+    @Mapping(target = "product", ignore = true)
+    Comment toEntity(CommentDto commentDTO);
 }

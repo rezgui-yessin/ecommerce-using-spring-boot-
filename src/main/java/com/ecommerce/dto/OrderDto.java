@@ -11,12 +11,12 @@ import java.util.List;
 public class OrderDto {
     private Long id;
     private Long userId;
-    @NotBlank(message=" Address is required")
+    @NotBlank(message = "Address is required")
     private String address;
-    @NotBlank(message=" Phone number is required")
+    @NotBlank(message = "Phone name is required")
     private String phoneNumber;
     private Order.OrderStatus status;
-    private LocalDateTime createTime;
-    private List<OrderItemDto> orderItemDto;
+    private LocalDateTime createdAt;
+    private List<OrderItemDto> orderItems;
 
 }

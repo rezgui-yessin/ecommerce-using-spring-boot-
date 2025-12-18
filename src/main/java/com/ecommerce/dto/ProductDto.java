@@ -2,6 +2,7 @@ package com.ecommerce.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -10,14 +11,15 @@ import java.util.List;
 @Data
 public class ProductDto {
     private Long id;
-    @NotBlank(message=" Product name is required")
+    @NotBlank(message = "Product name is required")
     private String name;
-    @NotBlank(message=" Product Desscription is required")
+    @NotBlank(message = "Product description is required")
     private String description;
-    @Positive(message=" Price must be positive value")
+    @Positive(message = "Cannot be negative")
     private BigDecimal price;
-    @Positive(message=" Quantity must be positive value")
-    private String quantity;
+    @PositiveOrZero(message = "Cannot be negative")
+    private Integer quantity;
+    private String image; //add image
     private List<CommentDto> comments;
 
 }

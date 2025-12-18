@@ -14,30 +14,16 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
 
-    // Converts Order entity to OrderDto
     @Mapping(target = "userId", source = "user.id")
-    @Mapping(target = "orderItemDto", source = "item")
-    OrderDto toDto(Order order);
-    // Converts OrderDto to Order entity
+    @Mapping(target = "orderItems", source = "items")
+    OrderDto toDTO(Order order);
+
     @Mapping(target = "user.id", source = "userId")
-    @Mapping(target = "item", source = "orderItemDto")
-    Order toEntity(OrderDto orderDto);
+    @Mapping(target = "items", source = "orderItems")
+    Order toEntity(OrderDto orderDTO);
 
-     /*
-     create list of dtos
-     this list mapping method takes a list of Order entities
-        and converts each entity to its corresponding OrderDto
-        using the toDto method defined above.*
-      */
-    List<OrderDto> toDtos(List<Order> orders);
-    /*
-    create list of entities
-    this list mapping method takes a list of OrderDto objects
-    and converts each dto to its corresponding Order entity
-    using the toEntity method defined above.*
-     */
-    List<Order> toEntitys(List<Order> orders);
-
+    List<OrderDto> toDTOs(List<Order> orders);
+    List<Order> toEntities(List<OrderDto> orderDTOS);
     @Mapping(target = "productId", source = "product.id")
     OrderItemDto toOrderItemDTO(OrderItem orderItem);
     @Mapping(target = "product.id", source = "productId")
@@ -45,6 +31,4 @@ public interface OrderMapper {
 
     List<OrderItemDto> toOrderItemDTOs(List<OrderItem> orderItem);
     List<OrderItem> toOrderItemEntities(List<OrderItemDto> orderItemDTO);
-
-
 }

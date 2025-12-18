@@ -10,27 +10,16 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface CartMapper {
-    /**
-     * CartMapper is responsible for mapping between
-     * Cart entities and CartDto objects.
-     *
-     * This mapper helps to:
-     * - Convert database entities to DTOs for API responses
-     * - Convert DTOs to entities for persistence
-     * - Avoid exposing full User and Product objects
-     * - Improve code readability and maintainability
-     */
+    @Mapping(target = "userId", source = "user.id")
+    CartDto toDTO(Cart Cart);
+    @Mapping(target="user.id", source = "userId")
+    Cart toEntity(CartDto cartDTO);
 
+    @Mapping(target="productId", source="product.id")
+    CartItemDto toDTO(CartItem cartItem);
 
-    @Mapping( target = "userId", source = "user.Id" )
-    CartDto toDto(Cart cart);
-    @Mapping(target = "user.Id", source = "userId" )
-    Cart toEntity(CartDto cartDto);
-    @Mapping (target = "productId", source = "product.Id" )
-    CartItemDto toDto(CartItem cartItem);
-    @Mapping (target = "product.Id", source = "productId" )
-    CartItem toEntity(CartItemDto cartItemDto);
-
+    @Mapping(target="product.id", source="productId")
+    CartItem toEntity(CartItemDto cartItemDTO);
 
 
 }
